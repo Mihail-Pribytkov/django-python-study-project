@@ -6,7 +6,7 @@ class News(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True, blank=True, verbose_name = 'Время создания')
     updateAt = models.DateTimeField(auto_now=True, blank=True, verbose_name = 'Время обновления')
     photo = models.ImageField(upload_to='media/%Y/%m/%d', null=True, blank=True, verbose_name = 'Фото')
-    is_published = models.BooleanField(default=True, verbose_name = 'Публикована')
+    is_published = models.BooleanField(default=True, verbose_name = 'Публикация')
 
     class Meta:
         verbose_name = 'Новости'
