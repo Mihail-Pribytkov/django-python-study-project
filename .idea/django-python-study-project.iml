@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/djangoPythonStudyProject" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoPythonStudyProject/News" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoPythonStudyProject/djangoPythonStudyProject" />
+      <excludeFolder url="file://$MODULE_DIR$/djangoPythonStudyProject/media" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.13 (django-python-study-project)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

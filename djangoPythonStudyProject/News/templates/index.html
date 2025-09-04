@@ -47,12 +47,11 @@
                             {% endif %}
                         </div>
                         <div class="media-body">
-                            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title
-                                }}</h5>
-                            {% autoescape off %}
-                            <p class="card-text">{{ item.content }}</p>
-                            {% endautoescape %}
-                            <a href="#" class="btn btn-primary">Read more...</a>
+                            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title }}</h5>
+                    {% autoescape off %}
+                    <p class="card-text">{{ item.content }}</p>
+                    {% endautoescape %}
+                    <a href="#" class="btn btn-primary">Read more...</a>
                         </div>
                         Категория: {{ item.category }}
                     </div>
@@ -63,7 +62,7 @@
                     {{ item.created_at|date:'Y-m-d H:i'}}
                 </div>
             </div>
-            {% endfor %}
+            {% endfor%}
         </div>
     </div>
 </div>
