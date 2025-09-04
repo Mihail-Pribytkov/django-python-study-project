@@ -38,18 +38,32 @@
             <div class="card 3">
                 {{ forloop.counter }}
                 <div class="card-header">
-                    Категория: {{ item.category }}
+                    <div class="media">
+                        <div class="media-photo">
+                            {% if item.photo %}
+                            <img src="{{ item.photo.url }}" class="mr-3" width="350" alt="Photo">
+                            {% else %}
+                            <h6>Не получилось найти фотографию</h6>
+                            {% endif %}
+                        </div>
+                        <div class="media-body">
+                            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title
+                                }}</h5>
+                            {% autoescape off %}
+                            <p class="card-text">{{ item.content }}</p>
+                            {% endautoescape %}
+                            <a href="#" class="btn btn-primary">Read more...</a>
+                        </div>
+                        Категория: {{ item.category }}
+                    </div>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.content }}</p>
-                    <a href="#" class="btn btn-primary">Read more...</a>
                 </div>
                 <div class="card-footer text-body-secondary">
                     {{ item.created_at|date:'Y-m-d H:i'}}
                 </div>
             </div>
-            {% endfor%}
+            {% endfor %}
         </div>
     </div>
 </div>
