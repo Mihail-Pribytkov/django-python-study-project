@@ -40,7 +40,7 @@
                     Категория: {{ item.category }}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
+                    <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title }}</h5>
                     <p class="card-text">{{ item.content }}</p>
                     <a href="#" class="btn btn-primary">Read more...</a>
                 </div>
