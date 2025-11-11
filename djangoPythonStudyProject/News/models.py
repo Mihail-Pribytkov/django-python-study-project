@@ -5,7 +5,7 @@ class News(models.Model):
     content = models.TextField(blank=True, verbose_name = 'Контент')
     createdAt = models.DateTimeField(auto_now_add=True, blank=True, verbose_name = 'Время создания')
     updateAt = models.DateTimeField(auto_now=True, blank=True, verbose_name = 'Время обновления')
-    photo = models.ImageField(upload_to='media/%Y/%m/%d', null=True, blank=True, verbose_name = 'Фото')
+    photo = models.ImageField(upload_to='djangoPythonStudyProject/media/testPhoto', null=True, blank=True, verbose_name = 'Фото')
     is_published = models.BooleanField(default=True, verbose_name = 'Публикация')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
@@ -13,7 +13,6 @@ class News(models.Model):
         verbose_name = 'Новости'
         verbose_name_plural = 'Новости'
         ordering = ['-createdAt']
-
 
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name = 'Категория')

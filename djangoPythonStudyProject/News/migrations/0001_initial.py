@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField(blank=True, verbose_name='Контент')),
                 ('createdAt', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
                 ('updateAt', models.DateTimeField(auto_now=True, verbose_name='Время обновления')),
-                ('photo', models.ImageField(blank=True, null=True, upload_to='media/%Y/%m/%d', verbose_name='Фото')),
+                ('photo', models.ImageField(blank=True, null=True, upload_to='djangoPythonStudyProject/media/testPhoto', verbose_name='Фото')),
                 ('is_published', models.BooleanField(default=True, verbose_name='Публикация')),
                 ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='News.category', verbose_name='Категория')),
             ],
