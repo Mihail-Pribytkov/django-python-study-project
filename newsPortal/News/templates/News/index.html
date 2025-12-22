@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{% url 'Home' %}">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Добавить новость</a>
+                    <a class="nav-link" href="{% url 'Home' %}">Добавить новость</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
@@ -33,9 +33,16 @@
 <div class="container mt-3">
     <h1>{{ title }}</h1>
     <div class="row">
-        <div class="md-12">
+        <div class="col-md-4">
+            <div class="list-group">
+                {% for cat in categories %}
+                <a href="{% url 'Category' cat.id  %}" class="list-group-item list-group-item-action">{{ cat.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-8">
             {% for item in news %}
-            <div class="card 3">
+            <div class="card md-3">
                 {{ forloop.counter }}
                 <div class="card-header">
                     <div class="media">
@@ -47,7 +54,9 @@
                             {% endif %}
                         </div>
                         <div class="media-body">
-                            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title }}</h5>
+                            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">
+                                {{ item.title }}
+                            </h5>
                     {% autoescape off %}
                     <p class="card-text">{{ item.content }}</p>
                     {% endautoescape %}
@@ -61,8 +70,8 @@
                 <div class="card-footer text-body-secondary">
                     {{ item.created_at|date:'Y-m-d H:i'}}
                 </div>
-            </div>
             {% endfor%}
+            </div>
         </div>
     </div>
 </div>

@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'djangoPythonStudyProject.urls'
+ROOT_URLCONF = 'NewsProject.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangoPythonStudyProject.wsgi.application'
+WSGI_APPLICATION = 'NewsProject.wsgi.application'
 
 
 # Database
