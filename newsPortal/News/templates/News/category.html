@@ -5,17 +5,14 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="col-md-4">
     <div class="list-group">
         {% for cat in categories %}
         <a href="{% url 'Category' cat.pk  %}" class="list-group-item list-group-item-action">{{ cat.title }}</a>
         {% endfor %}
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="col-md-8">
     {% for item in news %}
     <div class="card md-3">
         {{ forloop.counter }}
@@ -47,5 +44,4 @@
         </div>
         {% endfor%}
     </div>
-</div>
 {% endblock %}
