@@ -30,7 +30,7 @@
                     {% endautoescape %}
                     <a href="#" class="btn btn-primary">Read more...</a>
                 </div>
-                Категория: <a href="{% url 'Category' item.category_id|default:'0' %}"> {{
+                Категория: <a href="{{ item.category.get_absolute_url }}"> {{
                 item.category|default:"Без категории" }}</a></div>
         </div>
         <div class="card-body">
