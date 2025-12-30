@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Добавление новости :: {{ block.super }}
+Добавление новости :: {{ block.super }}
 {% endblock %}
 
 {% block sidebar %}
@@ -14,5 +14,37 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+    {{ form.none_field.errors }}
 </form>
+<!--    <form>-->
+<!--        <div class="form-group">-->
+<!--            <label for="{{ form.title.id_for_lable }}" class="form-label">Заголовок</label>-->
+<!--            {{ form.title }}-->
+<!--            <div class="invalid-feedback">-->
+<!--                {{ form.title.errors }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="{{ form.title.id_for_lable }}" class="form-label">Текст:</label>-->
+<!--            {{ form.content }}-->
+<!--            <div class="invalid-feedback">-->
+<!--                {{ form.content.errors }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="{{ form.title.id_for_lable }}" class="form-label">Публикация:</label>-->
+<!--            {{ form.is_published }}-->
+<!--            <div class="invalid-feedback">-->
+<!--                {{ form.is_published.errors }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="{{ form.title.id_for_lable }}" class="form-label">Категория:</label>-->
+<!--            {{ form.category }}-->
+<!--            <div class="invalid-feedback">-->
+<!--                {{ form.category.errors }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+
 {% endblock %}
