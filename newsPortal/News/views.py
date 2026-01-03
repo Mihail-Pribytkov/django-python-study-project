@@ -47,6 +47,10 @@ class ViewNews(DetailView):
     context_object_name = 'news_item'
     template_name = 'News/view_news.html'
 
+class AddNews(CreateView):
+    form_class = NewsForm
+    template_name = 'News/add_news.html'
+
 # def index(request):
 #     news = News.objects.all()
 #     categories = Category.objects.all()
@@ -74,13 +78,14 @@ class ViewNews(DetailView):
 #     }
 #     return render(request, 'News/view_news.html',context = context)
 
-def add_news(request):
-    if request.method == 'POST':
-        form = NewsForm(request.POST)
-        if form.is_valid():
-            # news = News.objects.create(**form.cleaned_data)
-            news = form.save()
-            return redirect(news)
-    else:
-        form = NewsForm()
-    return render(request, 'News/add_news.html', {'form': form})
+
+# def add_news(request):
+#     if request.method == 'POST':
+#         form = NewsForm(request.POST)
+#         if form.is_valid():
+#             news = News.objects.create(**form.cleaned_data)
+            # news = form.save()
+            # return redirect(news)
+    # else:
+    #     form = NewsForm()
+    # return render(request, 'News/add_news.html', {'form': form})
