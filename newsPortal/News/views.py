@@ -24,13 +24,28 @@ class NewsByCategory(ListView):
     context_object_name = 'news'
     allow_empty = False
 
-    def get_context_data(self, *, object_list=None,**kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = Category.objects.get(pk=self.kwargs['category_id'])
+
+        # Вместо try-except используйте get_object_or_404
+        from django.shortcuts import get_object_or_404
+        from .models import Category  # Импортируйте Category, а не News_category
+
+        category = get_object_or_404(Category, pk=self.kwargs['category_id'])
+        context['title'] = category.title
+        context['category'] = category
         return context
 
     def get_queryset(self):
-        return News.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
+        return News.objects.filter(
+            category_id=self.kwargs['category_id'],
+            is_published=True
+        )
+
+class ViewNews(DetailView):
+    model = News
+    context_object_name = 'news_item'
+    template_name = 'News/view_news.html'
 
 # def index(request):
 #     news = News.objects.all()
@@ -51,13 +66,13 @@ class NewsByCategory(ListView):
 #     }
 #     return render(request, 'News/category.html',context = context)
 
-def view_news(request, news_id):
-    #news_item = News.objects.get(pk=news_id)
-    news_item = get_object_or_404(News, pk=news_id)
-    context = {
-        'news_item': news_item
-    }
-    return render(request, 'News/view_news.html',context = context)
+# def view_news(request, news_id):
+#     #news_item = News.objects.get(pk=news_id)
+#     news_item = get_object_or_404(News, pk=news_id)
+#     context = {
+#         'news_item': news_item
+#     }
+#     return render(request, 'News/view_news.html',context = context)
 
 def add_news(request):
     if request.method == 'POST':
