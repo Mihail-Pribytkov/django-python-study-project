@@ -1,9 +1,10 @@
 {% load news_tags %}
 
 <div class="list-group">
-    {{ arg1 }} {{ arg2 }}
-    {% get_list_categories as categories %}
-    {% show_categories %}
+    <!--    {{ arg1 }} {{ arg2 }}-->
+    <!--    {% get_list_categories as categories %}-->
+    <!--    {% show_categories %}-->
     {% for cat in categories %}
+    <a href="{% url 'Category' cat.pk %}" class="list-group-item list-group-item-action">{{ cat.title }} <span class="badge bg-primary rounded-pill">14</span></a>
     {% endfor %}
 </div>
