@@ -1,12 +1,23 @@
 from django.contrib import admin
 from .models import News, Category
+from django.utils.safestring import mark_safe
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = [ 'id', 'category', 'title', 'createdAt', 'updateAt']
+    list_display = [ 'id', 'category', 'title', 'createdAt', 'updateAt', 'get_photo']
     list_display_links = ['title']
     search_fields = ['title', 'content']
     list_filter = ['is_published', 'id']
     list_editable = [ 'category']
+    fields = ['title', 'content', 'is_published', 'createdAt', 'updateAt', 'get_photo', 'photo']
+    readonly_fields = ('get_photo', 'createdAt', 'updateAt')
+
+    def get_photo(self, obj):
+        if obj.photo:
+            return mark_safe(f'< img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Нет фото'
+
+    get_photo_description = 'Миниатюра'
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['id', 'title']
@@ -14,4 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(Category, CategoryAdmin)
+
+admin.site.site_title = 'Страница администратора'
+admin.site.site_header = 'Страница администратора'
 # Register your models here.
