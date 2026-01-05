@@ -6,13 +6,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 
-# def test(request):
-#     object = ['john', 'paul', 'rechard', 'lower', 'apper']
-#     paginator = Paginator(object, 2)
-#     page_num = request.GET.get('page', 1)
-#     page_objects = paginator.get_page(page_num)
-#     return render(request, 'News/test.html', {'page_object': page_objects})
-
 class HomeNews(ListView, MyMixin):
     model = News
     context_object_name = 'news'
@@ -65,43 +58,3 @@ class AddNews(CreateView):
     form_class = NewsForm
     template_name = 'News/add_news.html'
     login_url = '/admin/'
-
-
-# def index(request):
-#     news = News.objects.all()
-#     categories = Category.objects.all()
-#     context = {
-#         'news': news,
-#         'title': 'Список новостей',
-#     }
-#     return render(request, 'News/index.html',context = context)
-
-# def get_category(request, category_id):
-#     news = News.objects.filter(category_id=category_id)
-#     categories = Category.objects.all()
-#     category = Category.objects.get(pk=category_id)
-#     context = {
-#         'news': news,
-#         'category': category
-#     }
-#     return render(request, 'News/category.html',context = context)
-
-# def view_news(request, news_id):
-#     #news_item = News.objects.get(pk=news_id)
-#     news_item = get_object_or_404(News, pk=news_id)
-#     context = {
-#         'news_item': news_item
-#     }
-#     return render(request, 'News/view_news.html',context = context)
-
-
-# def add_news(request):
-#     if request.method == 'POST':
-#         form = NewsForm(request.POST)
-#         if form.is_valid():
-#             news = News.objects.create(**form.cleaned_data)
-            # news = form.save()
-            # return redirect(news)
-    # else:
-    #     form = NewsForm()
-    # return render(request, 'News/add_news.html', {'form': form})
