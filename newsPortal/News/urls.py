@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path
 
-from News.views import HomeNews, NewsByCategory, ViewNews, AddNews, register, login
+from News.views import HomeNews, NewsByCategory, ViewNews, AddNews, register, user_login, user_logout
 # from News.views import HomeNews, get_category, view_news, add_news
 
 urlpatterns = [
@@ -17,8 +17,8 @@ urlpatterns = [
     path('news/<int:pk>/', ViewNews.as_view(), name='view_news'),
     path('news/add_news', AddNews.as_view(), name='add_news'),
     path('news/register', register, name='Register'),
-    path('news/login', login, name='Login'),
-
+    path('news/login', user_login, name='Login'),
+    path('news/logout', user_logout, name='Logout'),
 ]
 
 if settings.DEBUG:
