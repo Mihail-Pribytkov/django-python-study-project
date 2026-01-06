@@ -4,7 +4,28 @@ from .forms import NewsForm
 from .utils import MyMixin
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
+from django.contrib import messages
+
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm()
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Аккаунт успешно зарегестирован')
+            return redirect('login')
+        else:
+            messages.error(request, 'Произошла ошибка')
+    else:
+        form = UserCreationForm()
+    return render(request, 'News/register.html', {'form': form})
+
+def login(request):
+    return render(request, 'News/login.html')
+
 
 class HomeNews(ListView, MyMixin):
     model = News
