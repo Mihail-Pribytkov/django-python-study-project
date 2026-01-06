@@ -12,11 +12,11 @@ from django.contrib import messages
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm()
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Аккаунт успешно зарегестирован')
-            return redirect('login')
+            return redirect('Login')
         else:
             messages.error(request, 'Произошла ошибка')
     else:
