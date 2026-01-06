@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Category
-from .forms import NewsForm
+from .forms import NewsForm, UserRegisterForm
 from .utils import MyMixin
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,10 +9,9 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 
 
-
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Аккаунт успешно зарегестирован')
@@ -20,7 +19,7 @@ def register(request):
         else:
             messages.error(request, 'Произошла ошибка')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'News/register.html', {'form': form})
 
 def login(request):
