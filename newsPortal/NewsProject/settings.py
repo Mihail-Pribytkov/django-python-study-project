@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
     'debug_toolbar',
     'News',
 ]
@@ -127,3 +129,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = os.path.join(BASE_DIR, '/media/')
 MEDIA_ROOT = '/media/'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'

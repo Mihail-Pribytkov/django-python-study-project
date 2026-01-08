@@ -1,6 +1,16 @@
 from django.contrib import admin
 from .models import News, Category
 from django.utils.safestring import mark_safe
+from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+
+class NewsAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = News
+        fields = "__all__"
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = [ 'id', 'category', 'title', 'createdAt', 'updateAt', 'get_photo']
@@ -10,6 +20,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_editable = [ 'category']
     fields = ['title', 'content', 'is_published', 'createdAt', 'updateAt', 'get_photo', 'photo']
     readonly_fields = ('get_photo', 'createdAt', 'updateAt')
+    form = NewsAdminForm
 
     def get_photo(self, obj):
         if obj.photo:
